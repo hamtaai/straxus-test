@@ -1,0 +1,16 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+#Authentication
+login:
+    path:     /login
+    defaults: { _controller: AppBundle:login:login }
+
+login_check:
+    path: /login_check
+    # no controller is bound to this route
+    # as it's handled by the Security system
+    
+logout:
+    path: /logout

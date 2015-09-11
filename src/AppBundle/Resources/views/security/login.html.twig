@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    <div class="site-wrapper" id="home">
+        <div class="site-wrapper-inner" id="home-content">
+            <div id="home-text-wrapper">
+                <div id="home-text">
+                    {% if error %}
+                        <div class="alert-danger">
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </div>
+                    {% endif %}
+                    
+                    <div class="text-color-black">
+                        <form action="{{ path('login_check') }}" method="post">                
+                            <input type="text" id="username" name="_username" placeholder="Enter username" /><br />     
+                            <input type="password" id="password" name="_password" placeholder="Enter password" /><br />
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" >
+                            <input type="hidden" name="_target_path" value="/" />
+                            <button type="submit" id="admin-login" >Login</button>
+                        </form>
+                    </div>
+                            
+                            
+                            C A P T C H A B O Y Z
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
