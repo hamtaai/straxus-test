@@ -52,6 +52,13 @@ class users implements UserInterface, \Serializable {
     private $roles;
 
     /**
+    * @var datetime
+    *
+    * @ORM\Column(name="lastlogin", type="datetime")
+    */
+    private $lastlogin;
+      
+    /**
      * Get id
      *
      * @return integer 
@@ -124,7 +131,28 @@ class users implements UserInterface, \Serializable {
         //Ezért azokat először kivesszük
         return explode(',', str_replace(" ", "", $this->roles));
     }
-
+  
+    /**
+     * Set last login time
+     *
+     * @param datetime $lastlogin
+     * @return users
+     */
+    public function setLastlogin($lastlogin){
+        $this->lastlogin = $lastlogin;
+        
+        return $this;
+    }
+    
+    /**
+     * Get last login time
+     *
+     * @return datetime
+     */
+    public function getLastlogin(){
+        return $this->lastlogin;
+    }
+    
     public function eraseCredentials() {
         return;
     }
