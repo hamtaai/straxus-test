@@ -5,7 +5,10 @@
 * A program működéséhez szükséges adatbázist a CreateDB.sql file futtatásával lehet létrehozni.
   * Ez az adatbázis tartalmazza a szükséges táblákat és a 4 mintaadatot.
 * Az alkalmazásban az app/config/parameters.yml filet a saját konfigurációnk adataival kell kitölteni.
-  * A legfontosabb mezők: database_name, database_user, database_password
+  * A legfontosabb mezők: 
+    * database_name (= az adatbázis neve, azaz TesztDB), 
+    * database_user (= a mysql felhasználónk), 
+    * database_password (= a mysql jelszavunk)
 
 ### Login információk    
 | User   | Password   |
