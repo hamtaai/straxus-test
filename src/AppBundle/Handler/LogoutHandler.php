@@ -18,10 +18,11 @@ class LogoutHandler extends ContainerAware implements LogoutSuccessHandlerInterf
         
         $em = $this->container->get('doctrine')->getEntityManager();
         $user = $em->getRepository('AppBundle:users')->find($userID);
-        
-        $user->setLastLogin($loginTime);
-        $em->persist($user);
-        $em->flush();
+        if ($user) {
+            $user->setLastLogin($loginTime);
+            $em->persist($user);
+            $em->flush();
+        }
                
         $session->invalidate();
         

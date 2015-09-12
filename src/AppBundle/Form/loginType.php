@@ -23,17 +23,20 @@ class loginType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->setMethod('POST');
+        $builder->setAttribute('role', 'form');
 
         $builder->add('username', 'text', array(
             'label' => false,
             'attr' => array(
                 'placeholder' => 'Enter username',
+                'class' => 'form-control'
         )));
 
         $builder->add('password', 'password', array(
             'label' => false,
             'attr' => array(
                 'placeholder' => 'Enter password',
+                'class' => 'form-control'
         )));
 
         $builder->add('target_path', 'hidden', array(
@@ -45,10 +48,16 @@ class loginType extends AbstractType {
 
         $builder->add('recaptcha', 'captcha', array(
             'label' => false,
+            'width' => 270,
+            'height' => 60,
+            'length' => 5
         ));
 
         $builder->add('login', 'submit', array(
             'label' => "Login",
+            'attr' => array(
+                'class' => 'btn btn-default'
+            )
         ));
     }
 

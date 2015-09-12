@@ -6,14 +6,20 @@
 
 {% block body %}
     <br />
-    <div>
-        <table>
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th class="text-center">Info</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
             <tr>
-                <th>You are logged in as: </th>
+                <td><b>You are logged in as: </b></td>
                 <td>{{ user.username }}</td>             
             </tr>
             <tr>
-                <th>Your role(s): </th>
+                <td><b>Your role(s): </b></td>
                 <td>
                     {% set count = 0 %}
                     {% for role in user.roles %}
@@ -26,10 +32,9 @@
                 </td>             
             </tr>
             <tr>
-                <th>Your last login time: </th>
+                <td><b>Your last login time: </b></td>
                 <td>{{ user.lastlogin|date('Y-m-d, H:i:s') }}</td>             
             </tr>
+            </tbody>
         </table>
-
-    </div>
 {% endblock %}    

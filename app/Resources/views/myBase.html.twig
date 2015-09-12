@@ -3,30 +3,76 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+        {% block bootstrap %}
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+            <!-- Optional theme -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        {% endblock %}
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+    <div class="container-fluid text-center">
         {% block menu %}
-            <div class="menu">
-                <a href="{{ path('main_page') }}">Main page</a>
-                {% if is_granted('ROLE_ADMIN') %}
-                 | <a href="{{ path('admin_page') }}">Admin page</a>
-                {% endif %}
-                
-                {% if is_granted('ROLE_EDITOR') %}
-                 | <a href="{{ path('editor_page') }}">Editor page</a>
-                {% endif %}
-                
-                {% if is_granted('ROLE_USER') %}
-                 | <a href="{{ path('user_page') }}">User page</a>
-                {% endif %}
-                 | <a href="{{ path('logout') }}">Logout</a>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-6">
+                    <table class="table table-responsive">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="{{ path('main_page') }}">Main page</a>
+                                </td>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <td>
+                                        <a href="{{ path('admin_page') }}">Admin page</a>
+                                    </td>
+                                {% endif %}
+
+                                {% if is_granted('ROLE_EDITOR') %}
+                                    <td>
+                                        <a href="{{ path('editor_page') }}">Editor page</a>
+                                    </td>
+                                {% endif %}
+
+                                {% if is_granted('ROLE_USER') %}
+                                    <td>
+                                        <a href="{{ path('user_page') }}">User page</a>
+                                    </td>
+                                {% endif %}
+                                <td>
+                                    <a href="{{ path('logout') }}">Logout</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+            </div>   
+        {% endblock %}
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                {% block body %}
+
+                {% endblock %}
             </div>
-        {% endblock %}
-        {% block body %}
-            
-        {% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-1"></div>
+        </div> 
+    </div>
+{% block javascripts %}{% endblock %}
+</body>
 </html>

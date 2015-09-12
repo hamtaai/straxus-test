@@ -8,6 +8,8 @@
     <div class="site-wrapper" id="home">
         <div class="site-wrapper-inner" id="home-content">
             <div id="home-text-wrapper">
+                <br />
+                <br />
                 <div id="home-text">
                     {% if error %}
                         <div class="alert-danger">
@@ -18,9 +20,9 @@
                     <div class="text-color-black">
                         
                         {{ form_start(form) }}
-                            {{ form_widget(form.username) }}
+                            {{ form_widget(form.username) }} <br />
                             {{ form_widget(form.password) }} <br />
-                            {{ form_widget(form.login) }} <br />
+                            {{ form_widget(form.login) }} <br /><br />
                             {{ form_widget(form._token) }}
                             {{ form_widget(form.target_path) }} 
                             {{ form_rest(form) }}
