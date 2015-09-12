@@ -1,6 +1,0 @@
-namespaces:
-  RecaptchaBundle: EWZ\Bundle\RecaptchaBundle\Validator\Constraints\
-  
-AppBundle\Form\loginType:
-    recaptcha:
-        - "RecaptchaBundle:IsTrue": ~

@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class loginType extends AbstractType {
+    
 
     /**
      * {@inheritdoc}
@@ -23,7 +24,7 @@ class loginType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->setMethod('POST');
-        
+
         $builder->add('username', 'text', array(
             'label' => false,
             'attr' => array(
@@ -42,22 +43,22 @@ class loginType extends AbstractType {
                 'value' => "/"
             )
         ));
-        
-        $builder->add('captcha', 'captcha', array(
+
+        $builder->add('recaptcha', 'ewz_recaptcha', array(
             'label' => false
         ));
 
         $builder->add('login', 'submit', array(
-            'label' => "Login"
+            'label' => "Login",
+            
         ));
-         
     }
-    
-    public function configureOptions(OptionsResolver $resolver)
-    { 
+
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'intention' => 'authenticate',
-            )
+                )
         );
     }
+
 }

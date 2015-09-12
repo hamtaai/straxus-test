@@ -6,9 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\loginType;
-
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 
 class SecurityController extends Controller {
+
+    /**
+     * @Recaptcha\IsTrue
+     */
+    public $recaptcha;
 
     /**
      * @Route("/login", name="login_route")
@@ -25,9 +30,9 @@ class SecurityController extends Controller {
         $form = $this->createForm(new loginType(), NULL, array(
             'action' => $this->container->get('router')->generate('login_check')
         ));
-     
+
         $form->get('username')->setData($lastUsername);
-        
+
         $attempter = $request->getSession()->get("_security.last_username");
 
         if ($attempter !== null) {
@@ -35,12 +40,12 @@ class SecurityController extends Controller {
             $user = $em->getRepository('AppBundle:users')->findOneBy(array('username' => $attempter));
 
             if ($user) {
-                if ($user->getLoginAttempts() < 3) {        
-                    $form->remove('captcha');
+                if ($user->getLoginAttempts() < 3) {
+                    $form->remove('recaptcha');
                 }
-            } 
+            }
         } else {
-            $form->remove('captcha');
+            $form->remove('recaptcha');
         }
 
         return $this->render(
