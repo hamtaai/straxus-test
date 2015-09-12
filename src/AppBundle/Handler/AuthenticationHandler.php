@@ -20,15 +20,7 @@ class AuthenticationHandler extends ContainerAware implements AuthenticationSucc
         $userID = $token->getUser()->getId();
         $session->set('userID', $userID);
         $session->save();
-        
-        
-        /*
-        $user = $token->getUser();
-        $user->setLastLogin($loginTime);
-        
-        $this->container->get('doctrine')->getEntityManager()->flush();
-        */
-        
+               
         return new RedirectResponse($this->container->get('router')->generate('main_page'));
     }
 }

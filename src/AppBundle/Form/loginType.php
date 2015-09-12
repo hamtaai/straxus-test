@@ -5,7 +5,6 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
 
 class loginType extends AbstractType {
 
@@ -43,25 +42,21 @@ class loginType extends AbstractType {
                 'value' => "/"
             )
         ));
+        
+        $builder->add('captcha', 'captcha', array(
+            'label' => false
+        ));
 
         $builder->add('login', 'submit', array(
             'label' => "Login"
         ));
-        
-        $builder->add('recaptcha', 'ewz_recaptcha', array(
-            'label' => false,
-            'mapped' => false,
-            'constraints'   => array(
-                new IsTrue()
-            ),
-            'error_bubbling' => true
-        ));
+         
     }
     
     public function configureOptions(OptionsResolver $resolver)
-    {
+    { 
         $resolver->setDefaults(array(
-            'intention' => 'authenticate'
+            'intention' => 'authenticate',
             )
         );
     }

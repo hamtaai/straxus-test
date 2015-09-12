@@ -26,20 +26,7 @@
                             {{ form_rest(form) }}
                         {{ form_end(form) }}
                                                
-                    </div>
-                        {#
-                    <div>
-                        <form action="{{ path('login_check') }}" method="post">                
-                            <input type="text" id="username" name="login[username]" placeholder="Enter username" /><br />     
-                            <input type="password" id="password" name="login[password]" placeholder="Enter password" /><br />
-                            <input type="hidden" name="login[_token]" value="{{ csrf_token('authenticate') }}" >
-                            <input type="hidden" name="login[target_path]" value="/" />
-
-                            <button type="submit" id="admin-login" >Login</button>
-                        </form>
-                    </div>            
-                          #}  
-                            
+                    </div>                            
                 </div>
             </div>
         </div>

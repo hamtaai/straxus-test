@@ -59,6 +59,13 @@ class users implements UserInterface, \Serializable {
     private $lastlogin;
       
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="loginattempts", type="integer", nullable=false, options={"unsigned":true, "default":0})
+     */
+    private $loginAttempts;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -151,6 +158,26 @@ class users implements UserInterface, \Serializable {
      */
     public function getLastlogin(){
         return $this->lastlogin;
+    }
+    
+    /**
+     * Get login attempts
+     *
+     * @return integer 
+     */
+    public function getLoginAttempts() {
+        return $this->loginAttempts;
+    }
+    
+    /**
+     * Get login attempts
+     * @param integer $loginAttemps
+     * @return users 
+     */
+    public function setLoginAttempts($loginAttemps) {
+        $this->loginAttempts = $loginAttemps;
+        
+        return $this;
     }
     
     public function eraseCredentials() {
