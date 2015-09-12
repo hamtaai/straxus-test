@@ -6,15 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\loginType;
-use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 
 class SecurityController extends Controller {
-
-    /**
-     * @Recaptcha\IsTrue
-     */
-    public $recaptcha;
-
     /**
      * @Route("/login", name="login_route")
      */
