@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use AppBundle\Entity\users;
 
 class IndexController extends Controller {
 
@@ -18,8 +19,12 @@ class IndexController extends Controller {
      * @Template()
      */
     public function indexAction() {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        
         return $this->render(
-                    'AppBundle:index:index.html.twig'
+                    'AppBundle:index:index.html.twig', array(
+                        'user' => $user
+                    )
         );
     }
 }

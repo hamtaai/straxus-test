@@ -5,7 +5,31 @@
 {% endblock %}
 
 {% block body %}
-     
-    Hi, this is index.
-    
+    <br />
+    <div>
+        <table>
+            <tr>
+                <th>You are logged in as: </th>
+                <td>{{ user.username }}</td>             
+            </tr>
+            <tr>
+                <th>Your role(s): </th>
+                <td>
+                    {% set count = 0 %}
+                    {% for role in user.roles %}
+                        {{ role }}
+                        {% if user.roles|length > 1 and count < user.roles|length-1 %}
+                                ,
+                        {% endif %}
+                        {% set count = count + 1 %}
+                    {% endfor %}
+                </td>             
+            </tr>
+            <tr>
+                <th>Your last login time: </th>
+                <td>{{ user.lastlogin|date('Y-m-d, H:i:s') }}</td>             
+            </tr>
+        </table>
+
+    </div>
 {% endblock %}    

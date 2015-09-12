@@ -23,6 +23,7 @@ security:
             http_basic: ~
             provider: our_db_provider
             form_login:
+                success_handler: authentication_handler
                 login_path: /login
                 check_path: /login_check                
             logout:    
@@ -46,6 +47,7 @@ security:
             form_login:
                 login_path: /login
                 check_path: /login_check
+                success_handler: authentication_handler
                 csrf_provider: security.csrf.token_manager
                 
             logout:
