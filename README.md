@@ -3,7 +3,7 @@
 ### Előfeltételek
 * A telepítő script linux rendszerhez lett írva.
 * Az alkalmazás futásához szükséges telepített és futó MySQL és Apache2 szerver.
-* Az alkalmazás ezek mellett került tesztelésre.
+* Az alkalmazás ezek mellett került tesztelésre, firefox (40.0 verzió) böngészőn.
 
 
 ### Telepítési információk    
