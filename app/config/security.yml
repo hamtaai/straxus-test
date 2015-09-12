@@ -25,14 +25,13 @@ security:
             form_login:
                 success_handler: authentication_handler               
                 login_path: /login
-                check_path: /login_check    
-                
-               # username_parameter: login[username]
-               # password_parameter: login[password]
-               # target_path_parameter: login[target_path]
-              #  csrf_parameter: login[_token] 
+                check_path: /login_check                  
+                username_parameter: "login[username]"
+                password_parameter: "login[password]"
+                target_path_parameter: "login[target_path]"
+                csrf_parameter: "login[_token]" 
                 csrf_provider: security.csrf.token_manager
-               # intention: authenticate    
+                intention: authenticate    
             logout:    
                 invalidate_session: false
                 success_handler: logout_handler
