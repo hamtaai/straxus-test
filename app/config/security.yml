@@ -27,6 +27,8 @@ security:
                 login_path: /login
                 check_path: /login_check                
             logout:    
+                invalidate_session: false
+                success_handler: logout_handler
                 path: /logout
                 target: /login
               
@@ -55,6 +57,8 @@ security:
                 target: /login
                 
     access_control:
+        - { path: /_wdt/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /_profiler/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }        
         - { path: ^/admins, roles: ROLE_ADMIN }
         - { path: ^/editors, roles: ROLE_EDITOR }

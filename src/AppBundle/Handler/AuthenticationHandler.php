@@ -11,10 +11,24 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 class AuthenticationHandler extends ContainerAware implements AuthenticationSuccessHandlerInterface
 {
     function onAuthenticationSuccess(Request $request, TokenInterface $token)
-    {
-        $token->getUser()->setLastlogin(new \DateTime());
+    {   
+        $loginTime = new \DateTime();
+        $session = $this->container->get('session');
+        $session->start();
+        $session->set('sessionLoginTime', $loginTime);
+        
+        $userID = $token->getUser()->getId();
+        $session->set('userID', $userID);
+        $session->save();
+        
+        
+        /*
+        $user = $token->getUser();
+        $user->setLastLogin($loginTime);
+        
         $this->container->get('doctrine')->getEntityManager()->flush();
-
+        */
+        
         return new RedirectResponse($this->container->get('router')->generate('main_page'));
     }
 }

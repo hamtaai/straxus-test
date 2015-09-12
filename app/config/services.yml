@@ -11,3 +11,10 @@ services:
         class: AppBundle\Handler\AuthenticationHandler
         calls:
             - [ setContainer, [ @service_container ] ] 
+            
+    logout_handler:
+        class: AppBundle\Handler\LogoutHandler
+        arguments: ["@security.context"]
+        calls:
+            - [ setContainer, [ @service_container ] ]
+            
