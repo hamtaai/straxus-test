@@ -40,7 +40,7 @@ class SecurityController extends Controller {
         } else {
             $form->remove('recaptcha');
         }
-
+                
         return $this->render(
                         'AppBundle:security:login.html.twig', array(
                     'form' => $form->createView(),

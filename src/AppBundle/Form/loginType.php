@@ -2,11 +2,9 @@
 
 namespace AppBundle\Form;
 
-use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaIsTrue;
 
 class loginType extends AbstractType {
 
@@ -45,13 +43,8 @@ class loginType extends AbstractType {
             )
         ));
 
-        $builder->add('recaptcha', 'ewz_recaptcha', array(
+        $builder->add('recaptcha', 'captcha', array(
             'label' => false,
-            'mapped' => false,
-            'constraints' => array(
-                new RecaptchaIsTrue()
-            ),
-            'error_bubbling' => true
         ));
 
         $builder->add('login', 'submit', array(
@@ -60,13 +53,8 @@ class loginType extends AbstractType {
     }
 
     public function configureOptions(OptionsResolver $resolver) {
-        $collectionConstraint = new Collection(array(
-            'recaptcha' => new RecaptchaIsTrue(),
-        ));
-
         $resolver->setDefaults(array(
             'intention' => 'authenticate',
-            'validation_constraint' => $collectionConstraint
                 )
         );
     }

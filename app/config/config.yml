@@ -93,3 +93,5 @@ ewz_recaptcha:
     private_key: 6LfDvAwTAAAAAG0L7_u1MaEh4jRiqlO-2FkvNbXD
     locale_key:  %kernel.default_locale%
     enabled: true
+    
+gregwar_captcha: ~
