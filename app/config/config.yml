@@ -86,3 +86,9 @@ services:
         arguments:
             - "mysql:host=%database_host%;dbname=%database_name%"
             - { db_username: %database_user%, db_password: %database_password% }
+            
+ewz_recaptcha:
+    public_key:  6LfDvAwTAAAAAAJ3hTXbSABiccCbogVpAhgTFKRI
+    private_key: 6LfDvAwTAAAAAG0L7_u1MaEh4jRiqlO-2FkvNbXD
+    locale_key:  %kernel.default_locale%
+    enabled: true

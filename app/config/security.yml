@@ -23,9 +23,16 @@ security:
             http_basic: ~
             provider: our_db_provider
             form_login:
-                success_handler: authentication_handler
+                success_handler: authentication_handler               
                 login_path: /login
-                check_path: /login_check                
+                check_path: /login_check    
+                
+               # username_parameter: login[username]
+               # password_parameter: login[password]
+               # target_path_parameter: login[target_path]
+              #  csrf_parameter: login[_token] 
+                csrf_provider: security.csrf.token_manager
+               # intention: authenticate    
             logout:    
                 invalidate_session: false
                 success_handler: logout_handler
@@ -36,25 +43,6 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-            form_login:
-                login_path: /login
-                check_path: /login_check
-                success_handler: authentication_handler
-                csrf_provider: security.csrf.token_manager
-                
-            logout:
-                path: /logout
-                target: /login
                 
     access_control:
         - { path: /_wdt/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
